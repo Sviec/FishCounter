@@ -1,47 +1,44 @@
 # FishCounter
 
-Ручной подсчёт рыб на производстве — это муторно, медленно и неточно. Существующие решения часто:
+Manual fish counting in production is tedious, slow, and inaccurate. Existing solutions are often:
+- Expensive - require specialized equipment
+- Slow - cannot handle high fish density or struggle with rapidly changing scenes
 
-1. Дорогие - требуют спецоборудования
-2. Тормозные - не справляются с высокой плотностью рыб или плохо обрабатывают быстро изменяющуюся картинку
+Our project solves these problems! We are developing an affordable and fast algorithm that works on a standard computer (Core i5) and processes 500+ frames per second.
 
-Наш проект решает эти проблемы! Мы делаем доступный и быстрый алгоритм, который работает на обычном компьютере (Core i5) и обрабатывает 500+ кадров в секунду
+## What do we do?
+Task: Teach a computer to count fish in surveillance camera video in real-time.
+Conditions:
+- Standard cameras (not super expensive)
+- Core i5 processor
+- Processing speed: 500+ FPS
+- Real-world conditions: changing light, many fish in the frame, static camera
 
-## Что мы делаем?
-Задача: Научить компьютер считать рыб на видео с камер наблюдения в режиме реального времени.
-
-Условия:
-- Обычные камеры (не супер-дорогие)
-- Процессор Core i5
-- Скорость обработки: 500+ FPS
-- Реальные условия: меняющийся свет, много рыб в кадре, статичная камера
-
-## Как это работает?
-## Детекция
-### Шаг 1: Отделяем рыб от фона (MOG2)
-MOG2 моделирует каждый пиксель как смесь нескольких гауссовых распределений, которые постоянно обновляются. Алгоритм сравнивает новые значения пикселей с существующими распределениями, классифицируя их как фон или передний план. Это позволяет адаптироваться к изменениям освещения и отделять движущихся рыб от статичного фона в реальном времени.
-- Каждый пиксель на видео анализируется по-особому
-- Алгоритм сам адаптируется к изменению освещения
-- Результат: Четкое выделение движущихся рыб
+## How it works?
+## Detection
+### Step 1: Separate fish from the background (MOG2)
+MOG2 models each pixel as a mixture of several Gaussian distributions that are continuously updated. The algorithm compares new pixel values with existing distributions, classifying them as background or foreground. This allows adaptation to lighting changes and separates moving fish from a static background in real time.
+- Each pixel in the video is analyzed uniquely
+- The algorithm adapts to lighting changes automatically
+- Result: Clear highlighting of moving fish
+mog2
 
 <img width="850" height="640" alt="mog2" src="https://github.com/user-attachments/assets/59b51e96-48cf-4061-800c-c6d01c023fe7" />
 
-### Шаг 2: Улучшаем картинку (CLAHE)
-- Умное улучшение контраста даже в мутной воде
-- Работает с отдельными участками кадра
-- Результат: Рыбы становятся лучше видны
+### Step 2: Improve the image (CLAHE)
+- Intelligent contrast enhancement even in murky water
+- Works with individual sections of the frame
+- Result: Fish become more visible
 
-### Шаг 3: Чистим и объединяем (Морфологические операции)
-- Убираем "шум" и мелкие артефакты
-- Заполняем дыры в контурах рыб
+### Step 3: Clean and merge (Morphological Operations)
+- Remove "noise" and small artifacts
+- Fill holes in fish contours
+- Result: Neat and solid objects for counting
 
-Результат: Аккуратные и цельные объекты для подсчета
-
-### Пример работы
-
+### Work Example
 <img width="1601" height="636" alt="fish_results" src="https://github.com/user-attachments/assets/e86b0ab9-d1f3-4ba7-ad19-b0834695a70f" />
 
 
-# Итоговые результаты
+# Final Results
 <img width="1037" height="441" alt="image" src="https://github.com/user-attachments/assets/3f900eec-23dd-47d1-95fe-2a0a5ab7a206" />
 
