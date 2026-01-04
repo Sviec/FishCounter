@@ -40,5 +40,6 @@ mog2
 
 
 # Final Results
-<img width="1037" height="441" alt="image" src="https://github.com/user-attachments/assets/3f900eec-23dd-47d1-95fe-2a0a5ab7a206" />
+<img width="1037" height="406" alt="image" src="https://github.com/user-attachments/assets/04b5c824-39da-465b-9a01-cd28c7c31dc1" />
+
 
